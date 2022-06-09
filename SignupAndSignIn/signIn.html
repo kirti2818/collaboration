@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        h1{
+            font-size: 45px;;
+            width:10%;
+            margin:auto;
+            color:blue;
+            margin-bottom:-30px;
+        }
+
+        form{
+            width:30%;
+            margin:auto;
+            /* border:1px solid black; */
+            margin-top:70px;
+            padding:30px;
+            border-radius:10px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        input{
+            font-size: 22px;
+            padding:15px;
+            display: block;
+            margin:auto;
+            margin-top:5px;
+            border:1px solid grey;
+            border-radius: 8px;
+            
+        }
+        label{
+            font-size: 20px;
+            width:75%;
+            /* padding:5px; */
+            display: block;
+            margin:auto;
+        }
+        #sub{
+            width:90%;
+            margin:auto;
+            padding:10px;
+        }
+        #sub:hover{
+            color:white;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="">
+        <label for="">Email</label>
+        <input id="rightEmail" type="text" placeholder="Enter email"> <br>
+        <label for="">Password</label>
+        <input id="rightPswd" type="password" placeholder=" Enter password"> <br>
+        <input id="sub"type="Submit" value="Login">
+    </form>
+</body>
+</html>
+<script>
+    var Data=JSON.parse(localStorage.getItem("userData"))
+    document.querySelector("form").addEventListener("submit",myLogin)
+    function myLogin(event){
+       event.preventDefault()
+       var obj={
+           Email:document.querySelector("form").rightEmail.value,
+           Password:document.querySelector("form").rightPswd.value
+       };
+       var found=false;
+       Data.forEach(function(elem){
+           if(obj.Email==elem.mail && obj.Password==elem.password){
+                   found=true;
+                   alert("Login Successfully")
+           }
+       })
+       if(found==false){
+           alert("Wrong Credentials")
+       }
+
+
+    //    second method
+
+
+    // for(var i=0;i<Data.length;i++){
+    //     if(obj.Email==Data[i].mail && obj.Password==Data[i].password){
+    //                 found=true;
+    //               alert("Login Successfully")
+    //        }
+    // }
+    // if(found==false){
+    //     alert("Wrong Credentials")
+    // }
+    }
+</script>

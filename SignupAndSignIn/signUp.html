@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         h1{
+            font-size: 45px;
+            width:17%;
+            margin:auto;
+            color:blue;
+            margin-bottom:-30px;
+        }
+
+        form{
+            width:30%;
+            margin:auto;
+            /* border:1px solid black; */
+            margin-top:70px;
+            padding:20px;
+            border-radius:10px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        input{
+            font-size: 22px;
+            padding:15px;
+            display: block;
+            margin:auto;
+            margin-top:5px;
+            border:1px solid grey;
+            border-radius: 8px;
+            
+        }
+        label{
+            font-size: 20px;
+            width:75%;
+            /* padding:5px; */
+            display: block;
+            margin:auto;
+        }
+        #sub{
+            width:90%;
+            margin:auto;
+            padding:10px;
+        }
+        #sub:hover{
+            color:white;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <form action="">
+        <label for="">Email</label>
+        <input id="email" type="text" placeholder="Email"> <br>
+        <label for="">Phone Number</label> 
+        <input id="mbl" type="number" placeholder="Phone Number"> <br>
+        <label for="">Password</label>
+        <input id="pswd" type="password" placeholder="Password"> <br>
+        <input id="sub" type="submit" value="Submit"> <br>
+    </form>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",myFunction)
+    var userArr=[];
+    function myFunction(event){
+        event.preventDefault()
+        var userObj={
+         mail:document.querySelector("form").email.value,
+         phone: document.querySelector("form").mbl.value,
+         password:document.querySelector("form").pswd.value
+        }
+        userArr.push(userObj)
+        localStorage.setItem("userData",JSON.stringify(userArr))
+        alert("Submission Done")
+        window.location.href="signIn.html"
+    }
+</script>
